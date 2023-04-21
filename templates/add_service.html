@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Add Service</h1>
+  <form method="POST" action="{{ url_for('add_service') }}">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.name.label(class='form-control-label') }}
+      {{ form.name(class='form-control') }}
+      {% if form.name.errors %}
+        <div class="invalid-feedback">
+          {% for error in form.name.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      {{ form.cost.label(class='form-control-label') }}
+      {{ form.cost(class='form-control') }}
+      {% if form.cost.errors %}
+        <div class="invalid-feedback">
+          {% for error in form.cost.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    <button type="submit" class="btn btn-primary">Add Service</button>
+  </form>
+{% endblock %}
